@@ -8,7 +8,8 @@
       :before-close="handleClose">
 
       <div id="pdfDom">
-        <div class="proBox">
+        <div :class="proBox" class="proBox" v-for="(d,i) in tableData">
+
           <el-row>
             <el-col :span="10"><p class="tit-left">获奖</p></el-col>
             <el-col :span="4">
@@ -20,35 +21,35 @@
           <el-row>
             <el-col>
               <p class="con">
-                <span>{{tableData[dataNumber].school}}</span>作品《<span>{{tableData[dataNumber].name}}</span>》在2021年（第14届）中国大学生计算机设计大赛浙江省级赛中荣获
+                <span>{{d.school}}</span>作品《<span>{{d.name}}</span>》在{{year}}年（第{{jie}}届）中国大学生计算机设计大赛浙江省级赛中荣获
               </p>
             </el-col>
           </el-row>
 
           <el-row>
             <el-col>
-              <p class="con-main"><span>{{tableData[dataNumber].award}}</span></p>
+              <p class="con-main"><span>{{d.award}}</span></p>
             </el-col>
           </el-row>
 
           <el-row class="row">
-            <el-col><p>作者：<span>{{tableData[dataNumber].author1}} {{tableData[dataNumber].author2}} {{tableData[dataNumber].author3}} {{tableData[dataNumber].author4}}</span></p></el-col>
+            <el-col><p>作者：<span>{{d.author1}} {{d.author2}} {{d.author3}} {{d.author4}}</span></p></el-col>
           </el-row>
           <el-row class="row">
-            <el-col><p>指导老师：<span>{{tableData[dataNumber].teacher1}} {{tableData[dataNumber].teacher2}}</span></p></el-col>
+            <el-col><p>指导老师：<span>{{d.teacher1}} {{d.teacher2}}</span></p></el-col>
           </el-row>
           <el-row class="row">
-            <el-col><p>作品分类：<span>{{tableData[dataNumber].category}}</span></p></el-col>
+            <el-col><p>作品分类：<span>{{d.category}}</span></p></el-col>
           </el-row>
           <el-row class="row">
-            <el-col><p>证书编号：<span>{{tableData[dataNumber].number}}</span></p></el-col>
+            <el-col><p>证书编号：<span>{{d.number}}</span></p></el-col>
           </el-row>
 
           <el-row>
             <el-col>
               <div class="con-unit">
                 <p class="con-text">中国大学生计算机设计大赛浙江省级赛组织委员会</p>
-                <p>2021年8月&nbsp</p>
+                <p>{{byear}}年{{bmonth}}月&nbsp</p>
                 <div class="chapter" v-show="isShow"></div>
               </div>
             </el-col>
@@ -87,6 +88,8 @@
     inject: ['reload'],
     data() {
       return {
+        proBox: "proBox"+0,
+
         dataNumber: 0,//第几条数据
         tableData: [],//所有数据 共236条
 
@@ -95,35 +98,99 @@
         htmlTitle: "获奖证书",
         isShow: true,
         isCanvas: false,
-        downType: true // false为 pdf , true为图片
+        downType: true, // false为 pdf , true为图片
+        list: [
+          { id:1, name:'cc' },
+          { id:2, name:'yy' },
+          { id:3, name:'dd' },
+          { id:4, name:'ff' }
+        ],
+        year: "XXXX",
+        jie: "XX",
+        byear: "XXXX",
+        bmonth: "X",
       }
     },
+    //深度监听
+    // watch: {
+    //   dataNumber:{
+    //     handler(newData,oldData) {
+    //       this.dataNumber = newData;
+    //       console.log("dataNumber change"+this.dataNumber + ' : '+newData);
+    //       this.getPdf('#pdfDom');
+    //     },
+    //     immediate: true,
+    //     deep: true,
+    //   }
+    // },
     methods: {
       handleClose() {
         this.dialogVisible = false;
       },
-      downloadZS() {
-        for (let i = 0;i < this.tableData.length; i++){
-          this.getPdf('#pdfDom');
-          console.log("dataNumber1:"+this.dataNumber);
-          this.dataNumber = this.dataNumber + 1;
-          console.log("dataNumber2:"+this.dataNumber);
-          //更新dialog数据 更新不了啊！！！
-          // this.reload();
-          console.log("dataNumber3:"+this.dataNumber);
-        }
 
-        console.log(this.tableData.length);
+      downloadZS() {
+        // console.log(this.getPdf('#pdfDom'));
+        console.log(document.getElementsByClassName("proBox"));
+        // console.log(this.proBox);
+        this.getPdf('#proBox');
+        // this.getPdf('#pdfDom');
+        // for (let i = 1;i < this.tableData.length; i++){
+          // this.getPdf('#proBox');
+          // this.proBox = "proBox"+i;
+          // console.log(this.proBox);
+
+          // this.getPdf('#pdfDom');
+          // console.log(this.tableData[i]);
+          // console.log(this.getPdf('#pdfDom'));
+          // // window.alert('dom'+this.dataNumber);
+          // console.log("dataNumber1:"+this.dataNumber);
+          // this.dataNumber = this.dataNumber + 1;
+          // console.log("dataNumber2:"+this.dataNumber);
+          // //更新dialog数据 更新不了啊！！！
+          // // this.reload();
+          // console.log("dataNumber3:"+this.dataNumber);
+        // }
+
+        // console.log(this.tableData.length);
         // console.log(this.tableData[0].number);
         // this.getPdf('#pdfDom')
       }
     },
     created() {
       var that = this;
+      that.year = sessionStorage.getItem('year');
+      that.jie = sessionStorage.getItem('jie');
+      that.byear = sessionStorage.getItem('byear');
+      that.bmonth = sessionStorage.getItem('bmonth');
       selectAll().then(res => {
+        for (let i = 0;i < res.data.length; i++){
+          if (res.data[i].author1 == "无"){
+            res.data[i].author1 = null
+          }
+          if(res.data[i].author2 == "无") {
+            res.data[i].author2 = null
+          }
+          if(res.data[i].author3 == "无") {
+            res.data[i].author3 = null
+          }
+          if(res.data[i].author4 == "无") {
+            res.data[i].author4 = null
+          }
+          if(res.data[i].author5 == "无") {
+            res.data[i].author5 = null
+          }
+          if (res.data[i].teacher1 == "无"){
+            res.data[i].teacher1 = null
+          }
+          if(res.data[i].teacher2 == "无") {
+            res.data[i].teacher2 = null
+          }
+        }
         that.tableData = res.data;
-        console.log(res.data)
-      })
+        console.log('tableData');
+        console.log(res.data);
+      });
+
     },
   }
 </script>

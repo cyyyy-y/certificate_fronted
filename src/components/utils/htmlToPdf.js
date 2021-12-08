@@ -7,6 +7,7 @@ export default {
       var title = this.htmlTitle // 导出名称
       var type = this.downType // 导出类型 true ->图片 false-> pdf
       var htmlID = document.getElementById('pdfDom')
+      // console.log(htmlID);
       // window.pageYoffset = 0; // 如果有滚动条影响，会导致导出的内容不全，可以直接设置导出前置顶
       // document.documentElement.scrollTop = 0;
       // document.body.scrollTop = 0;

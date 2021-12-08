@@ -26,6 +26,7 @@
               <el-menu-item index="list">导入表格预览</el-menu-item>
               <el-menu-item index="generate">证书生成</el-menu-item>
               <el-menu-item index="demo">demo</el-menu-item>
+              <el-menu-item index="charts">数据统计</el-menu-item>
             </el-menu>
           </el-col>
 <!--          搜索-->

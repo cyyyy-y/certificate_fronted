@@ -23,10 +23,16 @@
       <el-col>
         <el-form class="form" :label-position="right" label-width="650px" :model="form">
           <el-form-item label="举办年份">
-            <el-input class="input" placeholder="2021" v-model="form.name"></el-input>
+            <el-input class="input" v-model="form.year"></el-input>
           </el-form-item>
           <el-form-item label="第几届">
-            <el-input class="input" placeholder="14" v-model="form.region"></el-input>
+            <el-input class="input" v-model="form.jie"></el-input>
+          </el-form-item>
+          <el-form-item label="颁奖年份">
+            <el-input class="input" v-model="form.byear"></el-input>
+          </el-form-item>
+          <el-form-item label="颁奖月份">
+            <el-input class="input" v-model="form.bmonth"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button class="button" type="primary" plain @click="submitForm('form')">提交</el-button>
@@ -48,14 +54,20 @@
         fileList: {},
         input: '',
         form: {
-          year: '',
-          jie: '',
+          year: '2021',
+          jie: '14',
+          byear: '2021',
+          bmonth: '8',
         }
       }
     },
     methods:{
       submitForm(formName) {
-        console.log(123)
+        console.log(this.form);
+        sessionStorage.setItem('year',this.form.year);
+        sessionStorage.setItem('jie',this.form.jie);
+        sessionStorage.setItem('byear',this.form.byear);
+        sessionStorage.setItem('bmonth',this.form.bmonth);
       },
 
       // 自定义上传 导入数据

@@ -50,7 +50,7 @@
           <el-row>
             <el-col>
               <p class="con">
-                <span>{{itemData.school}}</span>作品《<span>{{itemData.name}}</span>》在2021年（第14届）中国大学生计算机设计大赛浙江省级赛中荣获
+                <span>{{itemData.school}}</span>作品《<span>{{itemData.name}}</span>》在{{year}}年（第{{jie}}届）中国大学生计算机设计大赛浙江省级赛中荣获
               </p>
             </el-col>
           </el-row>
@@ -78,7 +78,7 @@
             <el-col>
               <div class="con-unit">
                 <p class="con-text">中国大学生计算机设计大赛浙江省级赛组织委员会</p>
-                <p>2021年8月&nbsp</p>
+                <p>{{byear}}年{{bmonth}}月&nbsp</p>
                 <div class="chapter" v-show="isShow"></div>
               </div>
             </el-col>
@@ -119,7 +119,11 @@
         htmlTitle: "获奖证书",
         isShow: true,
         isCanvas: false,
-        downType: true // false为 pdf , true为图片
+        downType: true, // false为 pdf , true为图片
+        year: "XXXX",
+        jie: "XX",
+        byear: "XXXX",
+        bmonth: "X",
       }
     },
     methods: {
@@ -163,6 +167,10 @@
     },
     created() {
       var that = this;
+      that.year = sessionStorage.getItem('year');
+      that.jie = sessionStorage.getItem('jie');
+      that.byear = sessionStorage.getItem('byear');
+      that.bmonth = sessionStorage.getItem('bmonth');
       selectAll().then(res => {
         that.tableData = res.data
         console.log(res.data)

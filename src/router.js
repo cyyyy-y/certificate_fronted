@@ -8,6 +8,7 @@ import Upload from "./views/Upload";
 import Generate from "./views/Generate";
 import List from "./views/List";
 import demo from "./views/demo";
+import Charts from "./views/Charts";
 
 Vue.use(Router)
 
@@ -47,6 +48,10 @@ const router = new Router({
           path: '/demo',
           component: demo,
         },
+        {
+          path: '/charts',
+          component: Charts,
+        }
       ]
     },
 
