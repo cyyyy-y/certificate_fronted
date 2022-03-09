@@ -231,7 +231,16 @@
     width: 300px;
     margin-top: 40px;
     margin-left: 40px;
-    box-shadow: 1px 1px 12px 1px #afbcc7;
+    box-shadow: 1px 1px 2px 1px #afbcc7;
+    border-radius: 8px;
+    display: flex;
+  }
+  .chart1-first:hover {
+    height: 120px;
+    width: 300px;
+    margin-top: 40px;
+    margin-left: 40px;
+    box-shadow: 1px 1px 14px 1px #afbcc7;
     border-radius: 8px;
     display: flex;
   }
@@ -240,7 +249,16 @@
     width: 300px;
     margin-top: 40px;
     margin-left: 40px;
-    box-shadow: 1px 1px 12px 1px #afbcc7;
+    box-shadow: 1px 1px 2px 1px #afbcc7;
+    border-radius: 8px;
+    display: flex;
+  }
+  .chart1-second:hover {
+    height: 120px;
+    width: 300px;
+    margin-top: 40px;
+    margin-left: 40px;
+    box-shadow: 1px 1px 14px 1px #afbcc7;
     border-radius: 8px;
     display: flex;
   }
@@ -249,7 +267,16 @@
     width: 300px;
     margin-top: 40px;
     margin-left: 40px;
-    box-shadow: 1px 1px 12px 1px #afbcc7;
+    box-shadow: 1px 1px 2px 1px #afbcc7;
+    border-radius: 8px;
+    display: flex;
+  }
+  .chart1-third:hover {
+    height: 120px;
+    width: 300px;
+    margin-top: 40px;
+    margin-left: 40px;
+    box-shadow: 1px 1px 14px 1px #afbcc7;
     border-radius: 8px;
     display: flex;
   }

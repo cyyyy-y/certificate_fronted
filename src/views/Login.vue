@@ -2,7 +2,6 @@
 <!--  <div>login</div>-->
   <div>
     <div class="login" v-if="two">
-
       <el-form :model="loginForm" status-icon ref="loginForm" label-width="70px" class="login-form">
         <div style="font-size: xx-large!important;font-family: 华文行楷;padding: 20px">管理员登录</div>
         <el-form-item label="用户名" prop="name">
