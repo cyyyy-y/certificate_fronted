@@ -24,7 +24,7 @@ npm run serve
 
 ## 最终实现
 表格导入：
-![表格导入](https://github.com/cyyyy-y/certificate_fronted/tree/main/src/assets/show/show2.png)
+![image](https://github.com/cyyyy-y/certificate_fronted/tree/main/src/assets/show/show2.png)
 
 证书下预览载：
-![证书下预览载](https://github.com/cyyyy-y/certificate_fronted/tree/main/src/assets/show/show4.png)
+![image](https://github.com/cyyyy-y/certificate_fronted/tree/main/src/assets/show/show4.png)
