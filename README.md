@@ -23,8 +23,8 @@ npm run serve
 - 数据可视化
 
 ## 最终实现
-- 表格导入：
+- 表格导入：  
 ![image](https://raw.githubusercontent.com/cyyyy-y/certificate_fronted/main/src/assets/show/show2.png)
 
-- 证书下预览载：
+- 证书下预览载：  
 ![image](https://raw.githubusercontent.com/cyyyy-y/certificate_fronted/main/src/assets/show/show4.png)
